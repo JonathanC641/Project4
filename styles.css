@@ -1,0 +1,13 @@
+img{
+    width: 50px;
+}
+
+.healthBar{
+    background-color: rgb(31, 211, 31);
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 100px;
+    padding-bottom: 40px;
+    text-align: center; 
+    font-size: 100px;
+}
