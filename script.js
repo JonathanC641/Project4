@@ -9,25 +9,26 @@ Each time the user is wounded, it takes an extra click to splat a bug (Hit count
 */
 const startingBugCount = 15; 
 const startHealthBar = 100;
-const defiantComments = []; 
-const mercyComments = []; 
+const defiantComments = ["You don't scare me!", "Disgusting human!", "You dare kill me??!", "Human scum!", "You shall rue the day!", "I will never beg for mercy."]; 
+const mercyComments = ["Please, please no!", "Have mercy on me!", "Don't kill me!", "No! I have a family!", "I can leave, please don't hurt me!"]; 
 const bug = 'bug.jpg'; 
 const splatted = 'splat.jpg'; 
 const commentsUsed = [];
-let healthBar, healthBarValue, currentBugCount, clicksToSplat, bugSplatted; 
+let healthBar, healthValue, healthBarValue, currentBugCount, clicksToSplat, bugSplatted; 
 
 function initialize(){
-    bugSplatted = document.getElementById("bug1"); 
     messageArea = document.querySelector(".messageArea");
     // healthBar = document.querySelector();
+    buttonGroup = document.getElementById("btnGrp");
     healthValue = document.getElementById("health");
     clicksToSplat = 1; 
     healthBarValue = startHealthBar; 
     currentBugCount = startingBugCount; 
 }
 
+
 function splat(){
-    let willFightBack = parseInt(Math.random() * 10) + 1; 
+    let willFightBack = parseInt(Math.random() * 10) + 1 <= 2; 
 
     if(willFightBack){
         healthCheck(); 
@@ -37,28 +38,33 @@ function splat(){
 }
 
 function changeImage(){
-    bugSplatted.src = splatted; 
+    let resurrect = parseInt(Math.random() * 10) + 1  === 1; 
+    bugSplatted = document.getElementById("bug1"); 
+    bugSplatted.src = splatted;
+    if(resurrect){
+        bugSplatted.src = bug; 
+    }
+     
     currentBugCount-=1; 
-    let used = true; 
     if(currentBugCount >= 8){
-        while(used){
-            let randIdx = parseInt(Math.random() * defiantComments.length) + 1; 
-            let randomComment = defiantComments[randIdx]; 
-            if(!commentsUsed.includes(randomComment)){
-                commentsUsed+= randomComment;
-            }
-        }                   
+        commentCheck(defiantComments);                  
     }else{
-        while(used){
-            let randIdx = parseInt(Math.random() * mercyComments.length) + 1; 
-            let randomComment = mercyComments[randIdx]; 
-            if(!commentsUsed.includes(randomComment)){
-                commentsUsed+= randomComment;
-            }
-        }            
+        commentCheck(mercyComments);           
     }
 }
 
+function commentCheck(commentArr){
+    let used = true; 
+    while(used){
+        let randIdx = parseInt(Math.random() * commentArr.length) + 1; 
+        let randomComment = commentArr[randIdx]; 
+        if(!commentsUsed.includes(randomComment)){
+            commentsUsed[commentsUsed.length] = randomComment;
+            used = false; 
+        }
+    }
+    
+}
 function healthCheck(){
     if(healthBarValue > 0){
         healthBarValue -= 10; 
@@ -68,4 +74,6 @@ function healthCheck(){
     }
 }
 
-function updateMessageArea(){}
+function updateMessageArea(){
+    
+}

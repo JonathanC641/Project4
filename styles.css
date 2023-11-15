@@ -7,7 +7,17 @@ img{
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 100px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     text-align: center; 
-    font-size: 100px;
+    font-size: 35px;
 }
+
+.status{
+    padding-top: 30px;
+}
+
+.buttons{
+    display: flex; 
+    align-items: center;
+}
+
