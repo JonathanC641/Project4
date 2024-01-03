@@ -16,8 +16,23 @@ img{
     padding-top: 30px;
 }
 
-.buttons{
-    display: flex; 
-    align-items: center;
+.container {
+    display: grid;
+    padding-top: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, .5fr);
+}
+
+.container div{
+    justify-content: space-around;
+}
+
+.bugMsg{
+    display: none;
+}
+
+.container div:hover + .bugMsg{
+    display: block;
+    color:red; 
 }
 
