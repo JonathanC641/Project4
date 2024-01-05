@@ -27,7 +27,7 @@ function initialize(){
 
 
 function splat(val){
-    let willFightBack = parseInt(Math.random() * 10) + 1 <= 2; 
+    let willFightBack = Math.random() <= .2; 
 
     if(willFightBack){
         healthCheck(); 
@@ -65,10 +65,10 @@ function commentCheck(commentArr){
             commentsUsed[commentsUsed.length] = comment;
             used = false; 
         }
-    }
-    let bugMessage = document.getElementById("comment"); 
+    }let bugMessage = document.getElementById("comment"); 
     bugMessage.innerHTML = comment; 
 }
+
 function healthCheck(){
     if(healthBarValue > 0){
         healthBarValue -= 10; 
@@ -76,8 +76,4 @@ function healthCheck(){
     }else{
         console.log("Clear the screen, update message area to report the player lost. "); 
     }
-}
-
-function updateMessageArea(){
-    
 }
