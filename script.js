@@ -13,7 +13,7 @@ const defiantComments = ["You don't scare me!", "Disgusting human!", "You dare k
 const mercyComments = ["Please, please no!", "Have mercy on me!", "Don't kill me!", "No! I have a family!", "I can leave, please don't hurt me!", "Noooo!", "I don't wanna go, please!", "MERCY!", "I'm innocent!", "I don't mean no harm!"]; 
 const bug = 'bug.jpg'; 
 const SPLATTED = 'splat.jpg'; 
-let healthBar, healthValue, healthBarValue, currentBugCount, commentsUsed, barWidth; 
+let healthBar, healthValue, healthBarValue, currentBugCount, commentsUsed, barWidth, bugMessage; 
 
 function initialize(){
     healthValue = document.getElementById("health");
@@ -68,7 +68,7 @@ function commentCheck(commentArr){
             used = false; 
         }
     }
-    let bugMessage = document.getElementById("comment"); 
+    bugMessage = document.getElementById("comment"); 
     bugMessage.innerHTML = comment; 
 }
 
@@ -82,3 +82,8 @@ function healthCheck(){
         console.log("Clear the screen, update message area to report the player lost. "); 
     }
 }
+
+function gameOver(){
+    let result = document.getElementById("gameStatus"); 
+}
+    
