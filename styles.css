@@ -7,17 +7,19 @@ img{
 }
 
 .healthBar{
-    background-color: rgb(31, 211, 31);
+    background-color: rgb(224, 218, 218);
+    width: 1fr;
+    border-radius: 100px;
     margin-left: 10%;
     margin-right: 10%;
-    border-radius: 100px;
-    padding-bottom: 30px;
     text-align: center; 
     font-size: 35px;
 }
 
 .status{
-    padding-top: 30px;
+    background-color: rgb(31, 211, 31);
+    border-radius: 100px;
+    width: 100%;
 }
 
 .container {
@@ -32,11 +34,6 @@ img{
 }
 
 .bugMsg{
-    display: none;
-}
-
-.container div:hover + .bugMsg{
-    display: block;
-    color:red; 
+    color: navajowhite;
 }
 

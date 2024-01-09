@@ -9,17 +9,17 @@ Each time the user is wounded, it takes an extra click to splat a bug (Hit count
 */
 const startingBugCount = 15; 
 const startHealthBar = 100;
-const defiantComments = ["You don't scare me!", "Disgusting human!", "You dare kill me??!", "Human scum!", "You shall rue the day!", "I will never beg for mercy.", "I will come back to haunt you!", "I WILL LAY EGGS IN YOUR FOOD!!", ""]; 
-const mercyComments = ["Please, please no!", "Have mercy on me!", "Don't kill me!", "No! I have a family!", "I can leave, please don't hurt me!"]; 
+const defiantComments = ["You don't scare me!", "Disgusting human!", "You dare kill me??!", "Human scum!", "You shall rue the day!", "I will never beg for mercy.", "I will come back to haunt you!", "I WILL LAY EGGS IN YOUR FOOD!!", "I look forward to haunting you, forever!"]; 
+const mercyComments = ["Please, please no!", "Have mercy on me!", "Don't kill me!", "No! I have a family!", "I can leave, please don't hurt me!", "Noooo!", "I don't wanna go, please!", "MERCY!", "I'm innocent!", "I don't mean no harm!"]; 
 const bug = 'bug.jpg'; 
 const SPLATTED = 'splat.jpg'; 
-const commentsUsed = [];
-let healthBar, healthValue, healthBarValue, currentBugCount, clicksToSplat; 
+let healthBar, healthValue, healthBarValue, currentBugCount, commentsUsed, barWidth; 
 
 function initialize(){
-    messageArea = document.querySelector(".messageArea");
     healthValue = document.getElementById("health");
-    clicksToSplat = 1; 
+    healthBar = document.querySelector('.status'); 
+    commentsUsed = []; 
+    barWidth = 100;
     healthBarValue = startHealthBar; 
     currentBugCount = startingBugCount; 
 }
@@ -36,22 +36,24 @@ function splat(val){
 }
 
 function changeImage(val){
+    console.log("I'm clicked!"); 
     let bugSplatted = document.getElementById(`bug${val}`); 
     if(bugSplatted.src !== SPLATTED){
         let resurrect = Math.random() === .1; 
         bugSplatted.src = SPLATTED;
 
-        if(resurrect){
-            bugSplatted.src = bug; 
-            bugSpeech(); 
+        if(currentBugCount < 8 ){
+            commentCheck(defiantComments);      
+            if(resurrect){
+                bugSplatted.src = bug;
+            }else{
+                currentBugCount-=1;
+            }
         }else{
-            currentBugCount-=1; 
+            commentCheck(mercyComments);      
+            currentBugCount-=1;     
         }
-        if(currentBugCount >= 8){
-            commentCheck(defiantComments);                  
-        }else{
-            commentCheck(mercyComments);           
-        }
+
     }
 }
 
@@ -59,7 +61,7 @@ function commentCheck(commentArr){
     let used = true; 
     let comment; 
     while(used){
-        let randIdx = parseInt(Math.random() * commentArr.length) + 1; 
+        let randIdx = parseInt(Math.random() * commentArr.length); 
         comment = commentArr[randIdx]; 
         if(!commentsUsed.includes(comment)){
             commentsUsed[commentsUsed.length] = comment;
@@ -73,12 +75,10 @@ function commentCheck(commentArr){
 function healthCheck(){
     if(healthBarValue > 0){
         healthBarValue -= 10; 
+        barWidth -= 10;
         healthValue.innerHTML = healthBarValue;
+        healthBar.style.width = barWidth + "%"; 
     }else{
         console.log("Clear the screen, update message area to report the player lost. "); 
     }
-}
-
-function bugSpeech(){
-
 }
