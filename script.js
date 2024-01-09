@@ -18,7 +18,6 @@ let healthBar, healthValue, healthBarValue, currentBugCount, clicksToSplat;
 
 function initialize(){
     messageArea = document.querySelector(".messageArea");
-    buttonGroup = document.getElementById("btnGrp");
     healthValue = document.getElementById("health");
     clicksToSplat = 1; 
     healthBarValue = startHealthBar; 
@@ -39,11 +38,12 @@ function splat(val){
 function changeImage(val){
     let bugSplatted = document.getElementById(`bug${val}`); 
     if(bugSplatted.src !== SPLATTED){
-        let resurrect = parseInt(Math.random() * 10) + 1  === 1; 
+        let resurrect = Math.random() === .1; 
         bugSplatted.src = SPLATTED;
 
         if(resurrect){
             bugSplatted.src = bug; 
+            bugSpeech(); 
         }else{
             currentBugCount-=1; 
         }
@@ -65,7 +65,8 @@ function commentCheck(commentArr){
             commentsUsed[commentsUsed.length] = comment;
             used = false; 
         }
-    }let bugMessage = document.getElementById("comment"); 
+    }
+    let bugMessage = document.getElementById("comment"); 
     bugMessage.innerHTML = comment; 
 }
 
@@ -76,4 +77,8 @@ function healthCheck(){
     }else{
         console.log("Clear the screen, update message area to report the player lost. "); 
     }
+}
+
+function bugSpeech(){
+
 }
