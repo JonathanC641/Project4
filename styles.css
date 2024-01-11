@@ -3,7 +3,7 @@ body{
 }
 
 img{
-    width: 100px;
+    width: 200px;
 }
 
 .healthBar{
@@ -12,10 +12,11 @@ img{
     border-radius: 100px;
     margin-left: 10%;
     margin-right: 10%;
-    text-align: center; 
-    font-size: 35px;
 }
-
+.value{
+    text-align: center;
+    font-size: 40;
+}
 .status{
     background-color: rgb(31, 211, 31);
     border-radius: 100px;
@@ -34,6 +35,8 @@ img{
 }
 
 .bugMsg{
-    color: navajowhite;
+    color: rgb(223, 126, 34);
+    width: 50%;
+    text-align: center; 
 }
 

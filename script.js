@@ -11,8 +11,8 @@ const startingBugCount = 15;
 const startHealthBar = 100;
 const defiantComments = ["You don't scare me!", "Disgusting human!", "You dare kill me??!", "Human scum!", "You shall rue the day!", "I will never beg for mercy.", "I will come back to haunt you!", "I WILL LAY EGGS IN YOUR FOOD!!", "I look forward to haunting you, forever!"]; 
 const mercyComments = ["Please, please no!", "Have mercy on me!", "Don't kill me!", "No! I have a family!", "I can leave, please don't hurt me!", "Noooo!", "I don't wanna go, please!", "MERCY!", "I'm innocent!", "I don't mean no harm!"]; 
-const bug = 'bug.jpg'; 
-const SPLATTED = 'splat.jpg'; 
+const bug = 'bug.png'; 
+const SPLATTED = 'splat.png'; 
 let healthBar, healthValue, healthBarValue, currentBugCount, commentsUsed, barWidth, bugMessage; 
 
 function initialize(){
@@ -84,6 +84,6 @@ function healthCheck(){
 }
 
 function gameOver(){
-    let result = document.getElementById("gameStatus"); 
+   bugMessage.innerHTML = "You've splatted us all!"; 
 }
     
